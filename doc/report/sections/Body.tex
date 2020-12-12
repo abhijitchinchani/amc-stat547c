@@ -1,0 +1,118 @@
+% !TEX root = ../main.tex
+
+% Main body 
+
+\section{PPCA formulation}
+
+In this section, we mathematically formulate PPCA. Let $X \in \mathbb{R}^m$ be the random variable corresponding to the observable data and $[\bar{x}_1, \bar{x}_2, ...,\bar{x}_N]$ be a set of N observed data vectors. Let $Z \in \mathbb{R}^k, \: k \leq m$ be the random variable corresponding to the low dimensional latent variable. As described above, we are interested in orthogonal latent dimensions and hence model $Z$ as Gaussian random variable with mean $\bar{0}$ and covariance as $I$. 
+
+\begin{align}
+	f(Z) = \mathcal{N}(\bar{0}, I) 
+\end{align} 
+
+Where, $f$ corresponds to the probability density function, $\mathcal{N}(\bar{u}, V)$ corresponds to multivariate Gaussian random variable with mean vector $\bar{u}$ and covariance matrix $V$.  We then formulate the PPCA as linear projection of observed data onto a low-dimensional space as follows - 
+
+\begin{align}
+	X ~ WZ + \bar{\mu} + \epsilon 
+\end{align} 
+\begin{align}
+	f(X|Z) = \mathcal{N}(WZ + \bar{\mu}, \sigma^2I) \label{eq2}
+\end{align} 
+
+Where, $W$ is the mixing matrix that transforms the data from latent space to the observed space. $\bar{\mu}$ is the mean of $X$ and $\epsilon$ is the uncorrelated observation noise with zero mean and covariance, $\mathbb{E}[\epsilon \epsilon^T] = \sigma^2 I$. The density function of $X$ is also Gaussian with mean and variance as follows - 
+
+ \begin{align*}
+	\mathbb{E}[X] &= \mathbb{E}[WZ] +  \bar{\mu} + \mathbb{E}[\epsilon] = \bar{\mu} \\
+	var(X) &= \mathbb{E}[XX^T] - \mathbb{E}[X]\mathbb{E}[X]^T \\
+		&= \mathbb{E}[ (WZ + \bar{\mu} + \epsilon) (WZ + \bar{\mu} + \epsilon)^T] - \bar{\mu}\bar{\mu}^T \\
+		&= W \mathbb{E}[ZZ^T] W^T + \bar{\mu}\bar{\mu}^T +  \mathbb{E}[\epsilon \epsilon^T] - \bar{\mu}\bar{\mu}^T \\
+		& = WW^T + \sigma^2 I
+\end{align*} 
+
+Therefore, 
+\begin{align}
+	f(X) = \mathcal{N}(\bar{\mu}, WW^T + \sigma^2I) 
+\end{align} 
+
+\subsection{Optimization using EM algorithm}
+
+In this section, we describe the optimization problem for PPCA. We aim to fit this model (3) to the observed data $[\bar{x}_1, \bar{x}_2, ...,\bar{x}_N]$, i.e., we fit the model parameters $\theta = [W, \bar{\mu}, \sigma]$. Here, columns of $W$ correspond to the vectors that span the principal components. We also find the corresponding projection of the observed data onto the latent dimensions. PPCA projections approach the PCA projections as $\sigma \rightarrow 0$. Here, we use expectation maximization (EM) algorithm as described in \cite{tipping1999probabilistic} to estimate the model parameters. The EM is an iterative algorithm consists of the expectation step (E-step) where the expected distribution of $Z$ given the model parameters for that iteration and the maximization step (M-step) calculates the model parameters that maximize the complete log likelihood of the data. 
+
+\begin{enumerate}
+	\item E-step \\
+	In the E-step we calculate $f(Z|X)$. Using Bayes' rule and substituting from (1), (3) and (4) we get - 
+	\begin{align*}
+		f(Z|X,\theta) &= \frac{f(X|Z) f(Z)}{f(X)} \\
+			&= \frac{\mathcal{N}(WZ + \bar{\mu}, \sigma^2I) \mathcal{N}(\bar{0}, I)}{\mathcal{N}(\bar{\mu}, WW^T + \sigma^2I)} \\
+			&= \mathcal{N}(C^{-1}W^T(X - \bar{\mu}), \sigma^2 C^{-1})
+	\end{align*}
+	Where, $C = W^TW + \sigma^2I$. Thus, the latent dimension for the $n{th}$ data sample, 
+	\begin{align}
+		\mathbb{E}[\bar{z}_n]  &= C^{-1}W^T(\bar{x}_n - \bar{\mu}) \\
+		\mathbb{E}[\bar{z}_n\bar{z}_n^T] &=  \sigma^2 C^{-1} + \mathbb{E}[\bar{z}_n]\mathbb{E}[\bar{z}_n]^T
+	\end{align}
+	
+	\item M-step \\
+	In the M-step, we estimate we find the model parameters $\theta = [W, \bar{\mu}, \sigma]$ that maximize the complete data log-likelihood. Consider the complete data log-likelihood - 
+	\begin{align*}
+		L &= log(f(X, Z)) = \sum_{n = 1}^N log(f(\bar{x}_n, \bar{z}_n)) \\
+			&= \sum_{n = 1}^N log(f(\bar{x}_n | \bar{z}_n)) + log(f(\bar{z}_n)) \\
+			&= \sum_{n = 1}^N ( -\frac{m}{2}log(2\pi \sigma^2) - \frac{1}{2} (\bar{x}_n - W\bar{z}_n - \bar{\mu})^T (\sigma^2I)^{-1} (\bar{x}_n - W\bar{z}_n - \bar{\mu}) - \frac{k}{2}log(2\pi) - \frac{1}{2} \bar{z}_n^T \bar{z}_n)
+	\end{align*}
+	
+	Taking expectation on $Z$ over both sides,
+	\begin{align}
+		\mathbb{E}[L] &= \sum_{n = 1}^N ( -\frac{m}{2}log(2\pi \sigma^2) -\frac{1}{2 \sigma^2} ((\bar{x}_n - \bar{\mu})^T (\bar{x}_n -  \bar{\mu}) - \mathbb{E}[\bar{z}_n^TW^T(\bar{x}_n - \bar{\mu})] \nonumber
+		\\ & \: \: \: - \mathbb{E}[(\bar{x}_n - \bar{\mu})^TW\bar{z}_n] + \mathbb{E}[\bar{z}_n^TW^TW\bar{z}_n]) - \frac{k}{2}log(2\pi) - \frac{1}{2} \mathbb{E}[\bar{z}_n^T \bar{z}_n])\nonumber \\ 
+		\mathbb{E}[L] &= \sum_{n = 1}^N ( -\frac{m}{2}log(2\pi \sigma^2) -\frac{1}{2 \sigma^2} ((\bar{x}_n - \bar{\mu})^T (\bar{x}_n -  \bar{\mu}) - \mathbb{E}[\bar{z}_n]^TW^T(\bar{x}_n - \bar{\mu}) 
+		\\ & \: \: \: - (\bar{x}_n - \bar{\mu})^TW\mathbb{E}[\bar{z}_n] + Tr(W^TW \mathbb{E}[\bar{z}_n^T\bar{z}_n])) - \frac{k}{2}log(2\pi) - \frac{1}{2} \mathbb{E}[\bar{z}_n^T \bar{z}_n]) \nonumber
+	\end{align}
+	
+	To estimate $W$, we find the maxima of (7) by differentiating w.r.t. $W$. 
+	\begin{align*}
+		\frac{d\mathbb{E}[L]}{dW} &= \sum_{n = 1}^N ( -\frac{1}{2 \sigma^2} ( - 2 (\bar{x}_n - \bar{\mu})^T\mathbb{E}[\bar{z}_n] + 2W\mathbb{E}[\bar{z}_n^T\bar{z}_n])) = 0 \nonumber 
+	\end{align*}
+	\begin{align*}
+		W(\sum_{n = 1}^N \mathbb{E}[\bar{z}_n^T\bar{z}_n]) = (\sum_{n = 1}^N (\bar{x}_n - \bar{\mu})^T\mathbb{E}[\bar{z}_n] )
+	\end{align*}
+	
+	Thus, the updated $W$ is 
+	\begin{align}
+		\hat{W} = (\sum_{n = 1}^N (\bar{x}_n - \bar{\mu})^T\mathbb{E}[\bar{z}_n] )(\sum_{n = 1}^N \mathbb{E}[\bar{z}_n^T\bar{z}_n])^{-1}
+	\end{align}
+	
+	Similarly, To estimate $\sigma^2$, we find the maxima of (7) by differentiating w.r.t. $\sigma^2$. 
+	\begin{align*}
+		\frac{d\mathbb{E}[L]}{d\sigma^2} &= \sum_{n = 1}^N ( -\frac{m}{2\sigma^2} + \frac{1}{2 \sigma^4} ((\bar{x}_n - \bar{\mu})^T (\bar{x}_n -  \bar{\mu}) - \mathbb{E}[\bar{z}_n]^TW^T(\bar{x}_n - \bar{\mu}) \nonumber
+		\\ & \: \: \: - (\bar{x}_n - \bar{\mu})^TW\mathbb{E}[\bar{z}_n] + Tr(W^TW \mathbb{E}[\bar{z}_n^T\bar{z}_n])) = 0
+	\end{align*}
+	
+	Thus, updated $\sigma^2$ is
+	\begin{align*}
+		\hat{\sigma}^2 &= \frac{1}{mN} \sum_{n = 1}^N ((\bar{x}_n - \bar{\mu})^T (\bar{x}_n -  \bar{\mu}) - \mathbb{E}[\bar{z}_n]^TW^T(\bar{x}_n - \bar{\mu}) \nonumber
+		\\ & \: \: \: - (\bar{x}_n - \bar{\mu})^TW\mathbb{E}[\bar{z}_n] + Tr(W^TW \mathbb{E}[\bar{z}_n^T\bar{z}_n])) \\
+				       &= \frac{1}{mN} (Tr(\sum_{n = 1}^N (\bar{x}_n - \bar{\mu}) (\bar{x}_n -  \bar{\mu})^T) - Tr(\sum_{n = 1}^N (\bar{x}_n - \bar{\mu}) \mathbb{E}[\bar{z}_n]^TW^T ) \nonumber
+		\\ & \: \: \: - Tr(\sum_{n = 1}^N W\mathbb{E}[\bar{z}_n] (\bar{x}_n - \bar{\mu})^T)+ Tr(W \sum_{n = 1}^N \mathbb{E}[\bar{z}_n^T\bar{z}_n] W^T))
+	\end{align*}
+	
+	Substituting the $\hat{W}$, we get, 
+	\begin{align}
+		\hat{\sigma}^2 &= \frac{1}{mN} Tr(\sum_{n = 1}^N (\bar{x}_n - \bar{\mu}) (\bar{x}_n -  \bar{\mu})^T) - \hat{W} \sum_{n = 1}^N \mathbb{E}[\bar{z}_n] (\bar{x}_n - \bar{\mu})^T)
+	\end{align}
+	
+	To estimate $\bar{\mu}$,
+	\begin{align}
+		\frac{d\mathbb{E}[L]}{d\bar{\mu}} &= \sum_{n = 1}^N ( -\frac{1}{2 \sigma^2} ( 2 (\bar{x}_n - \bar{\mu})) = 0 \nonumber \\
+		\bar{\mu} &= \frac{1}{N} \sum_{n = 1}^N \bar{x}_n
+	\end{align}
+	
+\end{enumerate}
+
+The ML estimate of $\bar{\mu}$ is the sample mean of the observed variable and is not updated in the EM algorithm. Thus, the initial model parameters are assigned randomly and then the EM algorithm is run and values of $W$ and $\sigma^2$ are updated each iteration until convergence. 
+
+
+
+
+
+
+% ...

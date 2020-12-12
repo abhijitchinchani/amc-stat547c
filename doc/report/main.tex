@@ -1,3 +1,4 @@
+% !BTB TS-program = biber
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Template for STAT 547C final project
 % Author: Ben Bloem-Reddy <benbr@stat.ubc.ca>
@@ -13,11 +14,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % your title/author/date information go here
-\title{\LaTeX\ Template for STAT 547C Final Project} % replace with your title
-\author{Benjamin Bloem-Reddy} % replace with your name
+\title{Probabilistic PCA using expectation maximization} % replace with your title
+\author{Abhijit Chinchani} % replace with your name
 \date{\today} % replace with your submission date
 
-\bibliography{../../ref/STAT_547C.bib} % add the title of your bibliography file
+\addbibresource{../../ref/STAT_547C.bib} % add the title of your bibliography file
 
 % start of document
 \begin{document}
@@ -28,6 +29,9 @@
 \include{sections/background}
 
 % add your main body sections here
+\include{sections/Body}
+
+\include{sections/Simulation}
 
 % open questions section
 \include{sections/open-questions}

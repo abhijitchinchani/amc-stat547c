@@ -1,0 +1,111 @@
+% !TEX root = ../main.tex
+
+% Convergence
+
+\section{Convergence of EM}
+
+This contents of this section are derived from the following references \cite{tipping1999probabilistic, roweis1997algorithms, dempster1977maximum, zangwill1967non, rao1973linear, wu1983convergence}. Let $\mathcal{X}$ and $\mathcal{Z}$ be two spaces, where we observe $X$ and the low dimensional latent space $Z$ is not observed. Let the density functions of $Z$, $X$, $(X,Z)$ and $X|Z$ be respectively $g(Z|\theta)$, $p(X|\theta)$, $k(X,Z|\theta)$, and $f(X|Z,\theta)$ for some parameters $\theta \in \Omega$. 
+The log likelihood function is - 
+\begin{align*}
+	L(\theta') &= log(p(X|\theta')) \\
+			&= \mathbb{E}[log(k(X,Z|\theta'))|Z, \theta] - \mathbb{E}[log(f(X|Z, \theta))|Z, \theta]\\
+			&= Q(\theta',\theta) - H(\theta', \theta)
+\end{align*}
+
+In the $i^{th}$ iteration of the EM algorithm, 
+\begin{enumerate}
+	\item E-step: Determine the $Q(\theta,\theta_i)$ function. In the PPCA above, this involved finding $f(Z|X)$ which was further used in the formula for $\mathbb{E}[log(f(Z,X))]$, which is $Q(\theta,\theta_i)$ in this general case.
+	\item M-step: Find $\theta_{i+1}$ such that it maximizes $Q(\theta,\theta_i)$
+\end{enumerate}
+
+\textbf{Definition 3.1}. Given two sets $A$ and $B$, a point-to-set map $M$ defined on $A$ with range in $B$ assigns each $a \in A$ to a subset $M(a)$ in $B$. It can be written as $M: A \rightarrow 2^B$.
+\\\\ For the EM algorithm, we define the M-step as a point-to-set map $M$ such that when $\theta_i \rightarrow \theta_{i+1} \in M(\theta_i)$. By definition of M-step we have,
+\begin{align}
+	Q(\theta',\theta) \geq Q(\theta,\theta), \text{   for all  } \theta' \in M(\theta)
+\end{align}\\
+
+\textbf{Lemma 3.2}. For any pair $(\theta', \theta)$, $H(\theta', \theta) \leq H(\theta, \theta)$ with equality if and only if $f(X|Z, \theta') = f(X|Z, \theta)$. 
+\textbf{Proof}. Using eq. 1e.6.6 from \cite{rao1973linear}, we have if $\int_S(f - g) du \geq 0$ then $\int_S(log(f) - log(g)) du \geq 0$ with equality only when $f = g$ (a.s)
+\begin{align*}
+	Q(\theta',\theta) &\geq Q(\theta,\theta)\\
+	\mathbb{E}[log(k(X,Z|\theta'))|Z, \theta] &\geq \mathbb{E}[log(k(X,Z| \theta))|Z, \theta]\\
+	\mathbb{E}[k(X,Z|\theta')|Z, \theta] &\geq \mathbb{E}[k(X,Z| \theta)|Z, \theta]\\
+\end{align*}
+We know that  $\mathbb{E}[p(Z|\theta')|Z, \theta]$ is constant and $k(X,Z) = f(X/Z)p(Z)$, thus using equation eq. 1e.6.6, 
+\begin{align*}
+	\mathbb{E}[f(X|Z,\theta')|Z, \theta] &\leq \mathbb{E}[f(X|Z, \theta)|Z, \theta]\\
+	\mathbb{E}[log(f(X|Z,\theta'))|Z, \theta] &\leq \mathbb{E}[log(f(X|Z, \theta))|Z, \theta]\\
+	H(\theta',\theta) &\leq H(\theta,\theta)\\
+\end{align*}
+
+Thus from eq. 1e.6.6, $H(\theta', \theta) \leq H(\theta, \theta)$ with equality if and only if $\mathbb{E}[log(f(X|Z,\theta'))|Z, \theta] = \mathbb{E}[log(f(X|Z, \theta))|Z, \theta]$, or $f(X|Z, \theta') = f(X|Z, \theta)$.\\
+
+\textbf{Lemma 3.3}. For every EM algorithm, $L(M(\theta)) \geq L(\theta)$ for all  $\theta \in \Omega$ and equality holds only when $Q(\theta',\theta) = Q(\theta,\theta)$ and $f(X|Z, \theta') = f(X|Z, \theta)$.\\
+\textbf{Proof}. Consider, $L(M(\theta)) - L(\theta) = \{Q(M(\theta)|\theta) - Q(\theta|\theta) \} - \{ H(M(\theta)|\theta) - H(\theta|\theta) \}$
+By definition of EM M-step (11), $Q(M(\theta)|\theta) \geq Q(\theta|\theta)$. \\
+By Lemma 3.2, $H(M(\theta)|\theta) \leq H(\theta|\theta)$ with equality only when $f(X|Z, \theta') = f(X|Z, \theta)$. \\
+Thus, $L(M(\theta)) \geq L(\theta)$ with equality only when $Q(\theta',\theta) = Q(\theta,\theta)$ and $f(X|Z, \theta') = f(X|Z, \theta)$.\\
+
+For the EM algorithm, we make the following assumptions as described in \cite{wu1983convergence}.
+\begin{enumerate}
+	\item The parameter space $\Omega \subset \mathbb{R}^r$, where $r$ is the number of parameters. 
+	\item $\Omega_{\theta_0} = \{ \theta \in \Omega: L(\theta) \geq L(\theta_0)\}$ for all $L(\theta_0) > -\infty$.
+	\item $L$ is continuous and differentiable in interior of $\Omega$.
+\end{enumerate}
+
+From these assumptions, $ (L(\theta_i))_{i \geq 0}$ is bounded above for any $\theta_0 \in \Omega$.\\
+
+\textbf{Theorem 3.4 (Zangwill's global convergence theorem)}.  Let $M$ be a point-to-set map from $\Omega$ to $\Omega$, for a given initial point $\theta_0 \in \Omega$, it generates a sequence $\{ \theta_i\}_{i = 1}^{\infty}$ such that $\theta_{i+1} \in M(\theta_i)$. \\
+Let $T \subset \Omega$ be a solution set and if 
+\begin{enumerate}
+	\item $\{ \theta_i\}_{i = 1}^{\infty} \subset S$, where $S \subset \Omega$ is compact set. 
+	\item there is a continuous, increasing and bounded function $L$ on $\Omega$ such that
+	\begin{enumerate}
+		\item if $\theta \notin T$, then $L(\theta') \ge L(\theta)$ for all $\theta' \in M(\theta)$
+		\item if $\theta \in T$, then $L(\theta') \geq L(\theta)$ for all $\theta' \in M(\theta)$
+	\end{enumerate} 
+	\item the map $M$ is closed at all points of $X - T$
+\end{enumerate}
+Then, the limit of any convergent subsequence of $\{ \theta_i\}_{i = 1}^{\infty}$ is a solution.\\
+\textbf{Proof}. Let $\hat{\theta}$ be the limit of the sequence $\{ \theta_i\}_{i = 1}^{\infty}$. \\
+Then there exists a subsequence, $\{ \theta_{i_j}\}_{j = 1}^{\infty}$ such that $\theta_{i_j} \rightarrow \hat{\theta}$ as $j \rightarrow \infty$. \\
+Since, the function $L$ is continuous, $L(\theta_{i_j}) \rightarrow L(\hat{\theta})$ as $j \rightarrow \infty$. \\
+From 2. of the problem statement, we know that $L$ is monotonically increasing on the sequence $\{ \theta_i\}_{i = 1}^{\infty}$ because $\theta_{i+1} \in M(\theta_i)$.\\
+Thus, $L(\hat{\theta}) - L(\theta_i) \geq 0$, for all $i$. \\
+Since, $L(\theta_{i_j}) \rightarrow L(\hat{\theta})$, for an $\epsilon \ge 0$ and $j_0$, \\
+$L(\hat{\theta}) - L(\theta_{i_j}) \leq \epsilon$ for $j \geq j_0$. \\
+Consider, $L(\hat{\theta}) - L(\theta_{i}) = L(\hat{\theta}) - L(\theta_{i_{j_0}}) + L(\theta_{i_{j_0}}) - L(\theta_{i}) < \epsilon$ for all $i \geq j_0$. \\
+This can be rewritten as $\sum_{i}i_{\epsilon}|L(\hat{\theta}) - L(\theta_{i})| \le \infty$ almost surely. \\
+Thus, $L(\theta_{i}) \rightarrow L(\hat{\theta})$ as $i \rightarrow \infty$. \\\\
+Next, we need to show that $\hat{\theta} \in T$. \\
+Proof by contradiction, assume that $\hat{\theta} \notin T$. \\
+Consider a subsequence  $\{ \theta_{i_j+1}\}_{j = 1}^{\infty}$ that converges to $\theta_{i_j+1} \rightarrow \bar{\theta}$ as $j \rightarrow \infty$. \\
+Based on the assumption, $\hat{\theta} \notin T$, then $\bar{\theta} \in M(\hat{\theta})$. \\
+But, since $L(\theta_{i}) \rightarrow L(\hat{\theta})$, then $L(\bar{\theta}) = L(\hat{\theta})$ which contradicts 2(b).  \\\\
+
+\textbf{Corollary 3.5}.  Let $M$ be the M-step point-to-set map of the EM algorithm. 
+\begin{enumerate}
+	\item $\{ \theta_i\}_{i = 1}^{\infty} \subset S$, where $S \subset \Omega$ is compact set if $Q(\theta'|\theta)$ is continuous \cite{wu1983convergence}. 
+	\item Let the solution set $T$ be the set of all local maxima. 
+	\item From Lemma 3.3, $L(\theta') \ge L(\theta)$ for all $\theta' \notin T$.
+\end{enumerate}
+Thus, if $Q(\theta'|\theta)$ is continuous, then the EM algorithm converges to a local maxima almost surely. Furthermore, \cite{tipping1999probabilistic} have shown that the global maxima is the only stable local extremum for PPCA. Thus, the EM algorithm for PPCA is stable irrespective of the initial model parameters. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ...

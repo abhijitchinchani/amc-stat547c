@@ -3,3 +3,30 @@
 % open questions section
 
 \section{Open questions and research directions}
+
+In this section, we discuss further extensions of PPCA using the EM algorithm. 
+
+\subsection{Gaussian process factor analysis with custom kernels}	
+
+PPCA is a simple generative model that finds latent dimensions of the raw data. PPCA has a noise model, where noise covariance is modelled as $\mathbb{E}[\epsilon \epsilon^T] = \sigma^2I$, i.e., the model assumes equal noise variation in each observation channel. This can be improved with a more complex noise model - $\mathbb{E}[\epsilon \epsilon^T] = R$, where $R$ is a diagonal matrix and channel can have different noise variance. This new model is called factor analysis (FA) and is also widely used \cite{harman1976modern, rummel1988applied}. \\
+
+Further extensions of FA are also possible. One such extention is the Gaussian Process Factor Analysis (GPFA). The model equations of GPFA are as follows: 
+\begin{align*}
+	f(Z) = \mathcal{N}(\bar{0}, K) 
+\end{align*} 
+\begin{align*}
+	f(X|Z) = \mathcal{N}(WZ + \bar{\mu}, R) 
+\end{align*} 
+
+where, $R$ is the noise covariance matrix as described in FA. $K$ is the prior covariance matrix for the latent variable $Z$. Other terminologies are same as PPCA. Yu et. al., used an auto-covariance matrix K to model the dynamics of time-series data and obtain latent dimensions varying at different time-scales \cite{yu2008gaussian}. This provides a powerful tool to model the spatial and temporal aspects of a time-series data and research involving feasibility of novel kernels can be performed. E.g. kernels designed to capture latent dimensions that have maximum variance in certain frequency bands can be envisaged. 
+
+
+\subsection{Constrained PPCA}
+
+Constrained Principal Component Analysis (CPCA) is supervised dimensionality reduction technique that combines multivariate multiple regression and PCA into a unified framework \cite{takane2001constrained}. CPCA aims to find latent dimensions not based on the variance of the raw data (as done by PCA), but based on the variance that is predictable from a predictor matrix. CPCA can be mainly split into steps, multivariate multiple regression is used to separate the total variance in the dependent variable (X) into variance predictable from the predictor variables (G) and variance that is not. This procedure splits the dependent variable matrix (X) into two matrices: one composed of variance predictable by the predictor variables(G), or regression-based predicted scores (GC), and the residual variance or error scores (E). This is represented as follows: 
+\begin{align*}
+	X = GC + E
+\end{align*} 
+where, X = matrix of dependent variables, G = matrix of predictor variables, C = (G’G)-1G’Z is a matrix of regression coefficients, GC = regression-based predicted score matrix, and E = residual scores (variance in Z not explained by predictor variables in G).
+
+This followed by PCA only on the predicted scores (GC) to extract latent dimensions of interest. This two step process can be combined into one generative model whose parameters can be estimated using EM algorithm. Although, complex extensions of PPCA can be very useful, but they come with their own set of challenges - most of the complex models do not converge to a global maxima and only converge to a local maxima. The convergence of these complex models can be studied in more detail. 

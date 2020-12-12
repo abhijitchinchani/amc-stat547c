@@ -2,7 +2,24 @@
 
 % Background section
 
-\section{Background}
+\section{Introduction}
+
+Dimensionality reduction is the transformation of the observed high-dimensional data to low-dimensional latent space, which presumably correspond to the intrinsic hidden dimensions of the data and help represent meaningful properties of the data. Usually dimensionality reduction problems involve data observed using a large number of sensors. The activity of a number of sensors is highly correlated and the raw data is often sparse. In many experiments, the source or latent signal of interest is often low-dimensional compared to the number of sensors. Thus, it is desirable to reduce the dimensions and obtain only uncorrelated of independent latent dimensions. Another reason for working with low-dimensional data is the reduced computational complexity of the analysis. Dimensionality reduction techniques have applications in various fields like - uncovering underlying brain activity from observed cortical sensors in neuroscience, source localization in MIMO (Multi-input multi-output) systems in telecommunication, speech processing, bioinformatics, and many other applications involving signal processing and machine learning.   \\
+
+One such commonly used dimensionality technique is the Principal Component Analysis (PCA). PCA takes in a number of high-dimensional data vectors and finds direction vectors that maximize the variance of the data in that dimension. These direction vectors are known as the principal axes. The principal axes are orthogonal to each other. The data is then projected onto the principal axes to generate principal components which are uncorrelated. Let $X \in \mathbb{R^{mxn}}$ be the observed data, where $m$ corresponds to the dimensions of $X$ and $n$ corresponds the number of samples. PCA involves performing eigen decomposition on the data matrix ($X$). 
+\begin{align*}
+	X &= UDU^T \\
+	X &= WZ
+\end{align*}
+
+where, $U$ is the unit orthogonal matrix containing the Eigen vectors or principal direction vectors, and $D$ is a diagonal matrix containing the Eigen values. This can be rewritten in-terms of a principal direction matrix ($W$) and principal components ($Z$). The components are arranged based on their variance and usually components with larger variance are chosen for further analysis.  \\
+
+Although PCA is a very simple and powerful technique, it has certain limitations - it does not have noise model that can denoise uncorrelated noise, the model is rigid and cannot be changed to model the data better. In order to solve this issue, a probabilistic version of PCA (PPCA) was developed \cite{tipping1999probabilistic, roweis1997algorithms}. PPCA consists of a generative linear model that projects the data into low-dimensional latent space. Since, PPCA assigns probabilities to the data, performance of various models can be compared. If the dimensionality of data is large then PCA can be computationally intensive as it estimates all the dimensions; on the other hand PPCA can estimate the required number of latent dimensions more efficiently. PPCA can also deal with missing data. Since, PPCA is a probabilistic model, further extensions of the model are possible. It also has explicit noise model that can model uncorrelated observation noise and can also generate simulated data from the generative model. Expectation-maximization algorithm is widely used method to estimate PPCA parameters \cite{tipping1999probabilistic, roweis1997algorithms, moon1996expectation, wu1983convergence}. \\
+
+In Section 2 of this paper, we formulate the widely used PPCA model \cite{tipping1999probabilistic, roweis1997algorithms} and derive the equations for the EM algorithm. EM algorithm is a heuristic method that optimizes the maximum likelihood estimator. It estimates the parameters iteratively from a given random initial point. In Section 3, we prove that under certain restrictions, the EM algorithm converges to a local optima; and EM for PPCA converges to a global optima. These classical results \cite{tipping1999probabilistic, roweis1997algorithms, dempster1977maximum, zangwill1967non, rao1973linear, wu1983convergence} are the foundation for various advanced extensions of PPCA. In Section 4, we briefly discuss few extensions of PPCA and research directions. 
+
+
+
 
 
 

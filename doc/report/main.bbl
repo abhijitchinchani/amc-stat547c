@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.0 $
+% $ biblatex bbl format version 3.1 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -16,5 +16,381 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global}
+    \entry{dempster1977maximum}{article}{}
+      \name{author}{3}{}{%
+        {{hash=163970f51407af0c8008e39a2f105946}{%
+           family={Dempster},
+           familyi={D\bibinitperiod},
+           given={Arthur\bibnamedelima P},
+           giveni={A\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=4279cdc0481b4faaaf6bbcd8c96ffa28}{%
+           family={Laird},
+           familyi={L\bibinitperiod},
+           given={Nan\bibnamedelima M},
+           giveni={N\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=49a367b6280de8a239f8bbdd573f996f}{%
+           family={Rubin},
+           familyi={R\bibinitperiod},
+           given={Donald\bibnamedelima B},
+           giveni={D\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{b9b674540b4dab965def96255d7c60f0}
+      \strng{fullhash}{b9b674540b4dab965def96255d7c60f0}
+      \strng{bibnamehash}{b9b674540b4dab965def96255d7c60f0}
+      \strng{authorbibnamehash}{b9b674540b4dab965def96255d7c60f0}
+      \strng{authornamehash}{b9b674540b4dab965def96255d7c60f0}
+      \strng{authorfullhash}{b9b674540b4dab965def96255d7c60f0}
+      \field{labelalpha}{DLR77}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the Royal Statistical Society: Series B (Methodological)}
+      \field{number}{1}
+      \field{title}{Maximum likelihood from incomplete data via the EM algorithm}
+      \field{volume}{39}
+      \field{year}{1977}
+      \field{pages}{1\bibrangedash 22}
+      \range{pages}{22}
+    \endentry
+    \entry{harman1976modern}{book}{}
+      \name{author}{1}{}{%
+        {{hash=a99a6ec3b78a74f839cc7f42ba2ca94d}{%
+           family={Harman},
+           familyi={H\bibinitperiod},
+           given={Harry\bibnamedelima H},
+           giveni={H\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {University of Chicago press}%
+      }
+      \strng{namehash}{a99a6ec3b78a74f839cc7f42ba2ca94d}
+      \strng{fullhash}{a99a6ec3b78a74f839cc7f42ba2ca94d}
+      \strng{bibnamehash}{a99a6ec3b78a74f839cc7f42ba2ca94d}
+      \strng{authorbibnamehash}{a99a6ec3b78a74f839cc7f42ba2ca94d}
+      \strng{authornamehash}{a99a6ec3b78a74f839cc7f42ba2ca94d}
+      \strng{authorfullhash}{a99a6ec3b78a74f839cc7f42ba2ca94d}
+      \field{labelalpha}{Har76}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Modern factor analysis}
+      \field{year}{1976}
+    \endentry
+    \entry{moon1996expectation}{article}{}
+      \name{author}{1}{}{%
+        {{hash=2bc1fd060e4f216a62bb0eb407606ece}{%
+           family={Moon},
+           familyi={M\bibinitperiod},
+           given={Todd\bibnamedelima K},
+           giveni={T\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{2bc1fd060e4f216a62bb0eb407606ece}
+      \strng{fullhash}{2bc1fd060e4f216a62bb0eb407606ece}
+      \strng{bibnamehash}{2bc1fd060e4f216a62bb0eb407606ece}
+      \strng{authorbibnamehash}{2bc1fd060e4f216a62bb0eb407606ece}
+      \strng{authornamehash}{2bc1fd060e4f216a62bb0eb407606ece}
+      \strng{authorfullhash}{2bc1fd060e4f216a62bb0eb407606ece}
+      \field{labelalpha}{Moo96}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Signal processing magazine}
+      \field{number}{6}
+      \field{title}{The expectation-maximization algorithm}
+      \field{volume}{13}
+      \field{year}{1996}
+      \field{pages}{47\bibrangedash 60}
+      \range{pages}{14}
+    \endentry
+    \entry{rao1973linear}{book}{}
+      \name{author}{5}{}{%
+        {{hash=c189c6138f6b722d0024710ec2e04662}{%
+           family={Rao},
+           familyi={R\bibinitperiod},
+           given={Calyampudi\bibnamedelima Radhakrishna},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=c189c6138f6b722d0024710ec2e04662}{%
+           family={Rao},
+           familyi={R\bibinitperiod},
+           given={Calyampudi\bibnamedelima Radhakrishna},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=f6160be577f707acb34ed4136e1412ac}{%
+           family={Statistiker},
+           familyi={S\bibinitperiod},
+           given={Mathematischer},
+           giveni={M\bibinitperiod}}}%
+        {{hash=c189c6138f6b722d0024710ec2e04662}{%
+           family={Rao},
+           familyi={R\bibinitperiod},
+           given={Calyampudi\bibnamedelima Radhakrishna},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=c189c6138f6b722d0024710ec2e04662}{%
+           family={Rao},
+           familyi={R\bibinitperiod},
+           given={Calyampudi\bibnamedelima Radhakrishna},
+           giveni={C\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley New York}%
+      }
+      \strng{namehash}{dc4011302794cddd032bbfa0ed5a1c0e}
+      \strng{fullhash}{51479db803a8e1998d2632305f90234f}
+      \strng{bibnamehash}{dc4011302794cddd032bbfa0ed5a1c0e}
+      \strng{authorbibnamehash}{dc4011302794cddd032bbfa0ed5a1c0e}
+      \strng{authornamehash}{dc4011302794cddd032bbfa0ed5a1c0e}
+      \strng{authorfullhash}{51479db803a8e1998d2632305f90234f}
+      \field{labelalpha}{Rao+73}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Linear statistical inference and its applications}
+      \field{volume}{2}
+      \field{year}{1973}
+    \endentry
+    \entry{roweis1997algorithms}{article}{}
+      \name{author}{1}{}{%
+        {{hash=709affbec617f6fb034be46e27fa4e34}{%
+           family={Roweis},
+           familyi={R\bibinitperiod},
+           given={Sam},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{709affbec617f6fb034be46e27fa4e34}
+      \strng{fullhash}{709affbec617f6fb034be46e27fa4e34}
+      \strng{bibnamehash}{709affbec617f6fb034be46e27fa4e34}
+      \strng{authorbibnamehash}{709affbec617f6fb034be46e27fa4e34}
+      \strng{authornamehash}{709affbec617f6fb034be46e27fa4e34}
+      \strng{authorfullhash}{709affbec617f6fb034be46e27fa4e34}
+      \field{labelalpha}{Row97}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advances in neural information processing systems}
+      \field{title}{EM algorithms for PCA and SPCA}
+      \field{volume}{10}
+      \field{year}{1997}
+      \field{pages}{626\bibrangedash 632}
+      \range{pages}{7}
+    \endentry
+    \entry{rummel1988applied}{book}{}
+      \name{author}{1}{}{%
+        {{hash=25c2cdb06c23497a47564e5f985e9333}{%
+           family={Rummel},
+           familyi={R\bibinitperiod},
+           given={Rudolf\bibnamedelima J},
+           giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Northwestern University Press}%
+      }
+      \strng{namehash}{25c2cdb06c23497a47564e5f985e9333}
+      \strng{fullhash}{25c2cdb06c23497a47564e5f985e9333}
+      \strng{bibnamehash}{25c2cdb06c23497a47564e5f985e9333}
+      \strng{authorbibnamehash}{25c2cdb06c23497a47564e5f985e9333}
+      \strng{authornamehash}{25c2cdb06c23497a47564e5f985e9333}
+      \strng{authorfullhash}{25c2cdb06c23497a47564e5f985e9333}
+      \field{labelalpha}{Rum88}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Applied factor analysis}
+      \field{year}{1988}
+    \endentry
+    \entry{takane2001constrained}{article}{}
+      \name{author}{2}{}{%
+        {{hash=d796aef4dec5dbe0d6502da7f68fb263}{%
+           family={Takane},
+           familyi={T\bibinitperiod},
+           given={Yoshio},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=f8d4a8f4347e293de38eb3075fb98127}{%
+           family={Hunter},
+           familyi={H\bibinitperiod},
+           given={Michael\bibnamedelima A},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{cfd04f2f1d289f4b0b5db99ace737e98}
+      \strng{fullhash}{cfd04f2f1d289f4b0b5db99ace737e98}
+      \strng{bibnamehash}{cfd04f2f1d289f4b0b5db99ace737e98}
+      \strng{authorbibnamehash}{cfd04f2f1d289f4b0b5db99ace737e98}
+      \strng{authornamehash}{cfd04f2f1d289f4b0b5db99ace737e98}
+      \strng{authorfullhash}{cfd04f2f1d289f4b0b5db99ace737e98}
+      \field{labelalpha}{TH01}
+      \field{sortinit}{T}
+      \field{sortinithash}{51f9faf24c60c62ca764a77f78cf5666}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Applicable Algebra in Engineering, Communication and Computing}
+      \field{number}{5}
+      \field{title}{Constrained principal component analysis: a comprehensive theory}
+      \field{volume}{12}
+      \field{year}{2001}
+      \field{pages}{391\bibrangedash 419}
+      \range{pages}{29}
+    \endentry
+    \entry{tipping1999probabilistic}{article}{}
+      \name{author}{2}{}{%
+        {{hash=a2c74152d71b4d7c085d53b7f226469a}{%
+           family={Tipping},
+           familyi={T\bibinitperiod},
+           given={Michael\bibnamedelima E},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=9dfd0135a5e80aa6d81cea2c10fb7f73}{%
+           family={Bishop},
+           familyi={B\bibinitperiod},
+           given={Christopher\bibnamedelima M},
+           giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{ca8f14d82921524b027d9bdd7a1ee843}
+      \strng{fullhash}{ca8f14d82921524b027d9bdd7a1ee843}
+      \strng{bibnamehash}{ca8f14d82921524b027d9bdd7a1ee843}
+      \strng{authorbibnamehash}{ca8f14d82921524b027d9bdd7a1ee843}
+      \strng{authornamehash}{ca8f14d82921524b027d9bdd7a1ee843}
+      \strng{authorfullhash}{ca8f14d82921524b027d9bdd7a1ee843}
+      \field{labelalpha}{TB99}
+      \field{sortinit}{T}
+      \field{sortinithash}{51f9faf24c60c62ca764a77f78cf5666}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the Royal Statistical Society: Series B (Statistical Methodology)}
+      \field{number}{3}
+      \field{title}{Probabilistic principal component analysis}
+      \field{volume}{61}
+      \field{year}{1999}
+      \field{pages}{611\bibrangedash 622}
+      \range{pages}{12}
+    \endentry
+    \entry{wu1983convergence}{article}{}
+      \name{author}{1}{}{%
+        {{hash=c6f85ab8f9769d61fca9270fb007d15a}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={CF\bibnamedelima Jeff},
+           giveni={C\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{c6f85ab8f9769d61fca9270fb007d15a}
+      \strng{fullhash}{c6f85ab8f9769d61fca9270fb007d15a}
+      \strng{bibnamehash}{c6f85ab8f9769d61fca9270fb007d15a}
+      \strng{authorbibnamehash}{c6f85ab8f9769d61fca9270fb007d15a}
+      \strng{authornamehash}{c6f85ab8f9769d61fca9270fb007d15a}
+      \strng{authorfullhash}{c6f85ab8f9769d61fca9270fb007d15a}
+      \field{labelalpha}{Wu83}
+      \field{sortinit}{W}
+      \field{sortinithash}{1af34bd8c148ffb32de1494636b49713}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Annals of statistics}
+      \field{title}{On the convergence properties of the EM algorithm}
+      \field{year}{1983}
+      \field{pages}{95\bibrangedash 103}
+      \range{pages}{9}
+    \endentry
+    \entry{yu2008gaussian}{article}{}
+      \name{author}{6}{}{%
+        {{hash=f150ef056b01a7a3008359f20f127fcf}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Byron\bibnamedelima M},
+           giveni={B\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=2f7d2033f2af8255e45b666491f83c85}{%
+           family={Cunningham},
+           familyi={C\bibinitperiod},
+           given={John\bibnamedelima P},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=fc689c9981a30218680453dcedd2ae8f}{%
+           family={Santhanam},
+           familyi={S\bibinitperiod},
+           given={Gopal},
+           giveni={G\bibinitperiod}}}%
+        {{hash=c4c4c1720bc486b2fdc1515c69a46e55}{%
+           family={Ryu},
+           familyi={R\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod}}}%
+        {{hash=b88f3898557dfebe05a2ff141f5e17b1}{%
+           family={Shenoy},
+           familyi={S\bibinitperiod},
+           given={Krishna\bibnamedelima V},
+           giveni={K\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+        {{hash=277241c95489c0dc41e83a400c407cc8}{%
+           family={Sahani},
+           familyi={S\bibinitperiod},
+           given={Maneesh},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{c9cfa71b86a3b114bbf69e4d5a81a12a}
+      \strng{fullhash}{0b3e2417b9752d05d390da351552de43}
+      \strng{bibnamehash}{c9cfa71b86a3b114bbf69e4d5a81a12a}
+      \strng{authorbibnamehash}{c9cfa71b86a3b114bbf69e4d5a81a12a}
+      \strng{authornamehash}{c9cfa71b86a3b114bbf69e4d5a81a12a}
+      \strng{authorfullhash}{0b3e2417b9752d05d390da351552de43}
+      \field{labelalpha}{Yu+08}
+      \field{sortinit}{Y}
+      \field{sortinithash}{6ae2ff5458ff901249c2745238c951b7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advances in neural information processing systems}
+      \field{title}{Gaussian-process factor analysis for low-dimensional single-trial analysis of neural population activity}
+      \field{volume}{21}
+      \field{year}{2008}
+      \field{pages}{1881\bibrangedash 1888}
+      \range{pages}{8}
+    \endentry
+    \entry{zangwill1967non}{article}{}
+      \name{author}{1}{}{%
+        {{hash=84d9d7aa645520567773d0fa4dd84080}{%
+           family={Zangwill},
+           familyi={Z\bibinitperiod},
+           given={Willard\bibnamedelima I},
+           giveni={W\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {INFORMS}%
+      }
+      \strng{namehash}{84d9d7aa645520567773d0fa4dd84080}
+      \strng{fullhash}{84d9d7aa645520567773d0fa4dd84080}
+      \strng{bibnamehash}{84d9d7aa645520567773d0fa4dd84080}
+      \strng{authorbibnamehash}{84d9d7aa645520567773d0fa4dd84080}
+      \strng{authornamehash}{84d9d7aa645520567773d0fa4dd84080}
+      \strng{authorfullhash}{84d9d7aa645520567773d0fa4dd84080}
+      \field{labelalpha}{Zan67}
+      \field{sortinit}{Z}
+      \field{sortinithash}{8f7b480688e809b50b6f6577b16f3db5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Management science}
+      \field{number}{5}
+      \field{title}{Non-linear programming via penalty functions}
+      \field{volume}{13}
+      \field{year}{1967}
+      \field{pages}{344\bibrangedash 358}
+      \range{pages}{15}
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 
